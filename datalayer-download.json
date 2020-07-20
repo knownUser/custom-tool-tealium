@@ -1,0 +1,12 @@
+{
+    "id" : "datalayer_download",
+    "title": "Download Datalayer",
+    "description": "This tool downloads the datalayer from tealium profile",
+    "icon_url" : "https://tealium-tools.s3.amazonaws.com/tools/logo.png",
+    "scripts": {
+        "notification" : {
+            "button_label": "Download",
+            "js": "(function() { if (utui.data.define) { dataLayerDownload(); } else { tealiumTools.sendError('Add a dataLayer Variable first'); } function dataLayerDownload() { var csvData = 'DataLayer [ID],Name,Type,Title,Description,Label'; var type = { cp: 'First Party Cookie', js: 'UDO Variable', js_page: 'JavaScript Variable', meta: 'Meta Data Element', qp: 'Querystring Parameter', va: 'AudienceStream' }; $.each(utui.data.define, function(i) { var that = utui.data.define; csvData += '\\n'; csvData += that[i]._id + ',' + that[i].name + ',' + type[that[i].type] + ',' + that[i].title + ',' + that[i].description + ',' + that[i].labels; }); $.each(utui.config.domDescriptions, function(i) { var that = utui.config.domDescriptions; csvData += '\\n'; csvData += '' + ',' + i + '' + ',' + 'DOM Variable' + ',' + '' + that[i] + ',' + ''; }); var b = document.createElement('a'), $v, csvDatas = new Blob([csvData], { type: 'text/csv' }); b.setAttribute('id', 'datalayer-csv-export'); b.setAttribute('href', URL.createObjectURL(csvDatas)); b.setAttribute('download', utui.profile.lastProfile + '-' + utui.profile.lastRevision + 'datalayer_export.csv'); document.body.appendChild(b); $v = $.find('#datalayer-csv-export')[0]; $v.click(); $v.remove(); } })();"
+        }
+    }
+}
