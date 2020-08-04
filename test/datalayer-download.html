@@ -4,7 +4,7 @@
     {{#if ui_start}}
     
       <br>
-      <b>Get Variables "{{data.account_name}}".</b>
+      <b>Get Variables for "{{data.account_name}}".</b>
       <br>
       
       <div class="btn-grp" style="margin-top:10px;">
@@ -67,18 +67,18 @@
 
       //Remove any current mousedown events on the exit button
        jQuery('#custom-tool-exit-btn').off('mousedown');
-       jQuery('#download_submit,#restart_submit").off('click');
+       jQuery("#download_submit,#restart_submit").off('click');
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
         tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
       });
       
       // Donwload event
-      jQuery('#download_submit").on('click', function() {
+      jQuery("#download_submit").on('click', function() {
          tealiumTools.invokeFunction('{{namespace}}',{command:"download"});
       });
       // Restart event
-       jQuery('#restart_submit").on('click', function() {
+       jQuery("#restart_submit").on('click', function() {
          tealiumTools.invokeFunction('{{namespace}}',{command:"start"});
       });
     // Make progress circle
