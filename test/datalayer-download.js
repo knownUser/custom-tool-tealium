@@ -76,6 +76,8 @@ window.datalayerDownload = window.datalayerDownload || {
     },
 
     getDatalayerVariables: function () {
+        
+        var that = this;
 
         this.makeProgressCircle('Getting all variables in accout: ' + this.message.data.account_name);
 
@@ -84,22 +86,24 @@ window.datalayerDownload = window.datalayerDownload || {
 
             Object.keys(utui.data.define).forEach((key) => {
 
-                var that = utui.data.define[key];
+                var thatData = utui.data.define[key];
 
-                this.message.data.csv += that._id + ',';
-                this.message.data.csv += that.name + ',';
-                this.message.data.csv += type[that.type] + ',';
-                this.message.data.csv += that[i].title + ',';
-                this.message.data.csv += that[i].description + ',';
-                this.message.data.csv += that[i].labels;
-                this.message.data.csv += '\n';
+                that.message.data.csv += thatData._id + ',';
+                that.message.data.csv += thatData.name + ',';
+                that.message.data.csv += type[thatData.type] + ',';
+                that.message.data.csv += thatData.title + ',';
+                that.message.data.csv += thatData.description + ',';
+                that.message.data.csv += thatData.labels;
+                that.message.data.csv += '\n';
 
             });
 
             Object.keys(utui.config.domDescriptions).forEach((key) => {
-
-                this.message.data.csv += '' + ',' + i + '' + ',' + 'DOM Variable' + ',' + '' + that[i] + ',' + '';
-
+                
+                var descriptionName = utui.config.domDescriptions[key];
+                
+                that.message.data.csv += '' + ',' + key + '' + ',' + 'DOM Variable' + ',' + '' + descriptionName + ',' + '';
+                that.message.data.csv += '\n';
             });
 
         } catch (error) {
@@ -113,12 +117,13 @@ window.datalayerDownload = window.datalayerDownload || {
     },
 
     ui_state: function (cmd) {
-        Object.keys(this.message).forEach(function (key, index) {
+        var that = this;
+        Object.keys(that.message).forEach(function (key, index) {
             if (key.indexOf('ui_') === 0) {
-                this.message[key] = false;
+                that.message[key] = false;
             }
         });
-        this.message[cmd] = true;
+        that.message[cmd] = true;
     },
 
     exit: function () {
