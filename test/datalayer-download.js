@@ -9,7 +9,7 @@ window.datalayerDownload = window.datalayerDownload || {
         namespace: "datalayer_download_main",
         data: {
             'header': '',
-            'footer': ''
+            'footer': '<br><p style="">Comments / bugs / feature requests? Open new issue at<a href="https://github.com/knownUser/custom-tool">MyGithub page</a></p>'
         }
     },
 
