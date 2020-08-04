@@ -44,10 +44,8 @@
     
     
       <div class="btn-grp" style="margin-top:5px;">
-        <input type="hidden" value="download" data-func="datalayer_download_main" data-arg="command">
-        <button id="download_submit" class="btn btn-success" data-func="datalayer_download_main">Download</button>
-        <input type="hidden" value="start" data-func="datalayer_download_main" data-arg="command">
-        <button id="start_submit" class="btn btn-warning" data-func="datalayer_download_main">Restart</button>
+        <button id="download_submit" class="btn btn-success">Download</button>
+        <button id="restart_submit" class="btn btn-warning">Restart</button>
       </div>
     
     {{/if}}
@@ -69,11 +67,20 @@
 
       //Remove any current mousedown events on the exit button
        jQuery('#custom-tool-exit-btn').off('mousedown');
+       jQuery('#download_submit,start_submit").off('click');
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
         tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
       });
-     
+      
+      // Donwload event
+      jQuery('#download_submit").on('click', function() {
+         tealiumTools.invokeFunction('{{namespace}}',{command:"download"});
+      });
+      // Restart event
+       jQuery('#restart_submit").on('click', function() {
+         tealiumTools.invokeFunction('{{namespace}}',{command:"start"});
+      });
     // Make progress circle
      window.makeProgressCircle = window.makeProgressCircle || function() {
        if(jQuery('div[id=progressCircle]').length === 0){
