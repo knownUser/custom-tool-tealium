@@ -14,7 +14,7 @@ window.datalayerDownload = window.datalayerDownload || {
 
     init: function (tool) {
         if (document.URL.indexOf('my.tealiumiq.com') === -1 || document.URL.indexOf('my.tealiumiq.com') === -1) {
-            this.ui_state('ui_error');
+            //this.ui_state('ui_error');
             tealiumTools.sendError('Need to be on TiQ website');
             return false;
         }
@@ -34,7 +34,7 @@ window.datalayerDownload = window.datalayerDownload || {
                 this.exit();
                 break;
             default:
-                this.ui_state('ui_error');
+                //this.ui_state('ui_error');
                 tealiumTools.sendError("Unknown command received from Tealium Tool: '" + tool.command + "'")
                 break;
 
@@ -44,6 +44,7 @@ window.datalayerDownload = window.datalayerDownload || {
     },
 
     start: function () {
+        this.message.exit = false;
         this.ui_state('ui_start');
         this.message.data.account_name = utui.login.account;
         this.message.data.headers = ["Datalayer[ID]", "Variable Name", "Variable Type", "Variable Title"];
