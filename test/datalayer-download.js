@@ -6,6 +6,7 @@ window.datalayerDownload = window.datalayerDownload || {
     initialized: false,
 
     message: {
+        namespace: "datalayer_download_main",
         data: {
             'header': '',
             'footer': ''
