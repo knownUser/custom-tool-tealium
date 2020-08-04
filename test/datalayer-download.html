@@ -40,14 +40,14 @@
     
     {{#if ui_finish}}
     
-      <p>Collected Datalayer Variables for "{{data.account_name}}". </p>
+      <p> Collected Datalayer Variables for "{{data.account_name}}". </p>
     
     
       <div class="btn-grp" style="margin-top:5px;">
         <input type="hidden" value="download" data-func="datalayer_download_main" data-arg="command">
-        <button id="download_submit" class="btn btn-success">Download</button>
+        <button id="download_submit" class="btn btn-success" data-func="datalayer_download_main>Download</button>
         <input type="hidden" value="start" data-func="datalayer_download_main" data-arg="command">
-        <button id="start_submit" class="btn btn-warning">Restart</button>
+        <button id="start_submit" class="btn btn-warning" data-func="datalayer_download_main>Restart</button>
       </div>
     
     {{/if}}
