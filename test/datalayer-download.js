@@ -6,17 +6,17 @@ window.datalayerDownload = window.datalayerDownload || {
     initialized: false,
 
     message: {
-        namespace: "datalayer_download_main",
-        data: {
-            'header': '',
-            'footer': '<br><p style="">Comments / bugs / feature requests? Open new issue at<a href="https://github.com/knownUser/custom-tool">MyGithub page</a></p>'
-        }
+        'header': '',
+        'footer': '<br><p style="">Comments / bugs / feature requests? Open new issue at<a href="https://github.com/knownUser/custom-tool">MyGithub page</a></p>',
+        'namespace': "datalayer_download_main",
+         data: {
+         }
     },
 
     init: function (tool) {
         if (document.URL.indexOf('my.tealiumiq.com') === -1 || document.URL.indexOf('my.tealiumiq.com') === -1) {
             //this.ui_state('ui_error');
-            tealiumTools.sendError('Need to be on TiQ website');
+            this.error('Need to be on TiQ website');
             return false;
         }
 
@@ -36,7 +36,7 @@ window.datalayerDownload = window.datalayerDownload || {
                 break;
             default:
                 //this.ui_state('ui_error');
-                tealiumTools.sendError("Unknown command received from Tealium Tool: '" + tool.command + "'")
+                this.error("Unknown command received from Tealium Tool: '" + tool.command + "'")
                 break;
 
         }
@@ -124,6 +124,13 @@ window.datalayerDownload = window.datalayerDownload || {
             }
         });
         that.message[cmd] = true;
+    },
+    
+     error: function(msg) {
+        this.ui_state('ui_error');
+        this.message.data.error_message = msg;
+        console.log('Error: '+msg);
+        tealiumTools.send(this.message);
     },
 
     exit: function () {
