@@ -1,0 +1,15 @@
+{
+    "id" : "datalayer_download",
+    "title": "Download Datalayer",
+    "description": "This tool downloads the datalayer from tealium profile",
+    "icon_url" : "",
+    "scripts": {
+        "donwload" : {
+            "button_label": "Start",
+            "template": "https://knownuser.github.io/custom-tool/test/datalayer-download.html",
+            "remote_template": true,
+            "js": "https://knownuser.github.io/custom-tool/test/datalayer-download.js",
+            "remote_js": true
+        }
+    }
+}
