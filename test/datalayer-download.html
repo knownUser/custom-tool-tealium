@@ -71,7 +71,7 @@
        jQuery('#custom-tool-exit-btn').off('mousedown');
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
-        tealiumTools.invokeFunction('datalayer_download_main',{command:"exit"});
+        tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
       });
      
     // Make progress circle
