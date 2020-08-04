@@ -47,7 +47,7 @@ window.datalayerDownload = window.datalayerDownload || {
         this.ui_state('ui_start');
         this.message.data.account_name = utui.login.account;
         this.message.data.headers = ["Datalayer[ID]", "Variable Name", "Variable Type", "Variable Title"];
-        this.message.data.csv = this.message.headers.join(',') + ',Variable Description,Variable Label\n';
+        this.message.data.csv = this.message.data.headers.join(',') + ',Variable Description,Variable Label\n';
     },
 
     download: function () {
