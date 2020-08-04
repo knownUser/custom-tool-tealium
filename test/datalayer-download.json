@@ -5,11 +5,11 @@
     "icon_url" : "",
     "scripts": {
         "donwload" : {
-            "button_label": "Start",
-            "template": "https://knownuser.github.io/custom-tool/test/datalayer-download.html",
-            "remote_template": true,
+            "auto_inject": true,
             "js": "https://knownuser.github.io/custom-tool/test/datalayer-download.js",
-            "remote_js": true
+            "remote_js": true,
+            "template": "https://knownuser.github.io/custom-tool/test/datalayer-download.html",
+            "remote_template": true
         }
     }
 }
