@@ -112,7 +112,7 @@ window.datalayerDownload = window.datalayerDownload || {
 
     ui_state: function (cmd) {
         Object.keys(this.message).forEach(function (key, index) {
-            if (key.indexOf(ui_) === 0) {
+            if (key.indexOf('ui_') === 0) {
                 this.message[key] = false;
             }
         });
