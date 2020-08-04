@@ -13,7 +13,7 @@ window.datalayerDownload = window.datalayerDownload || {
     },
 
     init: function (tool) {
-        if (document.URL.indexOf(my.tealiumiq.com) === -1 || document.URL.indexOf(my.tealiumiq.com) === -1) {
+        if (document.URL.indexOf('my.tealiumiq.com') === -1 || document.URL.indexOf('my.tealiumiq.com') === -1) {
             this.ui_state('ui_error');
             tealiumTools.sendError('Need to be on TiQ website');
             return false;
