@@ -7,6 +7,6 @@ Custom tool which can be used with Tealium.
 datalayer-download.json file contains the code which can be used to download the datalayer from Tealium. Use this code with Tealium Custom Tool.
 
 # By adding custom URL
- https://knownuser.github.io/custom-tool/datalayer-download.json add this URL in your tealium custom tool
+https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.json add this URL in your tealium custom tool
 
 Note: We should be logged in to Tealium.
