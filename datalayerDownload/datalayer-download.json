@@ -6,9 +6,9 @@
     "scripts": {
         "donwload" : {
             "auto_inject": true,
-            "js": "https://knownuser.github.io/custom-tool/datalayerDownload/datalayer-download.js",
+            "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
             "remote_js": true,
-            "template": "https://knownuser.github.io/custom-tool/datalayerDownload/datalayer-download.html",
+            "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
             "remote_template": true
         }
     }
