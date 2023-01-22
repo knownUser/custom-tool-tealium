@@ -75,7 +75,7 @@
       });
 
       //Start Event
-      jQuery("#start_submit").on('click', function() {
+      jQuery("#run_submit").on('click', function() {
         var userInput = jQuery('#attr_label').val();
          tealiumTools.invokeFunction('{{namespace}}',{command:"run",filter:userInput});
       });
