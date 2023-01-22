@@ -1,5 +1,11 @@
 <script type="text/x-handlebars">
     <header></header>
+
+    <div class="btn-grp" style="margin-top:10px;">
+        <label for="attrlabel">Attribute Label: </label>
+        <input type="text" id="attr_label" name="attrlabel"><br><br>
+        <button id="run_submit" class="btn btn-success" >Start</button>
+      </div>  
     
     {{#if ui_start}}
     
@@ -7,11 +13,6 @@
       <b>Get Variables for "{{data.account_name}}".</b>
       <br>
       
-      <div class="btn-grp" style="margin-top:10px;">
-        <label for="attrlabel">Attribute Label: </label>
-        <input type="text" id="attr_label" name="attrlabel"><br><br>
-        <button id="run_submit" class="btn btn-success" >Start</button>
-      </div>  
     {{/if}}
     
     {{#if ui_error}}
