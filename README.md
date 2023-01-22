@@ -10,3 +10,7 @@ datalayer-download.json file contains the code which can be used to download the
 https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.json add this URL in your tealium custom tool
 
 Note: We should be logged in to Tealium.
+
+
+# AudienceStream attributes extraction by custom text
+https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audiencestream-extract.json
