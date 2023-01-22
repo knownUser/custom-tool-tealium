@@ -6,6 +6,7 @@
     "scripts": {
         "attributes-by-text": {
             "title": "Attributes by Label",
+            "button_label": "Initiate!",
             "auto_inject": false,
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "remote_js": true,
