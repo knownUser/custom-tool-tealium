@@ -138,13 +138,7 @@ window.ssattributes_download_main = function (args) {
     return ssattributesDownload.init(args);
 }
 
-if (ssattributes_download_main) {
-    ssattributes_download_main({
-        command: 'start'
-    });
-}
-
-/*if (!ssattributesDownload.initialized) {
+if (!ssattributesDownload.initialized) {
     ssattributesDownload.initialized = true;
     ssattributes_download_main({
         command: 'start'
@@ -155,4 +149,4 @@ if (ssattributes_download_main) {
             command: "start"
         });
     }
-} */
+} 
