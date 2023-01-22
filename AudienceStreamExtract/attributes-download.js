@@ -23,6 +23,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
 
         switch (tool.command) {
             case "start":
+                console.log('inside start');
                 this.start();
                 break;
             case "run":
@@ -53,6 +54,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
         this.message.data.profile_name = queryParams.get("profile");
         this.message.data.headers = ["Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
         this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
+        console.log(this);
     },
 
     download: function () {
