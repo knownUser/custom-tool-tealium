@@ -1,0 +1,24 @@
+{
+    "id": "audiencestream_extract",
+    "title": "AudienceStream Extract",
+    "description": "This tool downloads the attributes and audiences from AudienceStream Profile",
+    "icon_url": "https://knownuser.github.io/custom-tool-tealium/one-punch-man-saitama.jpg",
+    "scripts": {
+        "attr-by-label": {
+            "title": "Attributes by Label",
+            "auto_inject": true,
+            "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
+            "remote_js": true,
+            "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
+            "remote_template": true
+        },
+        "attr-by-text": {
+            "title": "Attributes by Text",
+            "auto_inject": true,
+            "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
+            "remote_js": true,
+            "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
+            "remote_template": true
+        }
+    }
+}
