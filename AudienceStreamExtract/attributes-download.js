@@ -101,7 +101,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
             });
 
         } catch (error) {
-            this.log('An error occured collecting variable data: ' + error);
+            console.log('An error occured collecting variable data: ' + error);
 
         }
 
