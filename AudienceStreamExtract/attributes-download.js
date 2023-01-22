@@ -27,7 +27,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
                 break;
             case "run":
                 this.makeProgressCircle();
-                this.getssAttributes();
+                this.getssAttributes(tool.filter);
                 break;
             case "download":
                 this.download();
@@ -78,7 +78,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
         tealiumTools.send(this.message);
     },
 
-    getssAttributes: function () {
+    getssAttributes: function (filter) {
 
         var that = this;
 
@@ -87,7 +87,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
         try {
             var userInput = tealiumTools.input.attributeLabel.toString();
             _.each(gApp.inMemoryModels.quantifierCollection.sortBy("name"), function (x) {
-                if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
+                if (x.get('name').toLowerCase().indexOf(filter) > -1) {
                     that.data.csv += x.get('name') + ',';       //Attribute Name
                     that.data.csv += x.get('context').value + ',';   //Scope
                     that.data.csv += x.get('type').displayName + ','; //DataType

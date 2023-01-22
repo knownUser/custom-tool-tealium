@@ -8,8 +8,9 @@
       <br>
       
       <div class="btn-grp" style="margin-top:10px;">
-        <input type="hidden" value="run" data-func="ssattributes_download_main" data-arg="command">
-        <button id="run_submit" class="btn btn-success" data-func="ssattributes_download_main">Start</button>
+        <label for="attrlabel">Attribute Label: </label>
+        <input type="text" id="attr_label" name="attrlabel"><br><br>
+        <button id="run_submit" class="btn btn-success" >Start</button>
       </div>  
     {{/if}}
     
@@ -71,6 +72,12 @@
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
         tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
+      });
+
+      //Start Event
+      jQuery("#start_submit").on('click', function() {
+        var userInput = jQuery('#attr_label').val();
+         tealiumTools.invokeFunction('{{namespace}}',{command:"run",filter:userInput});
       });
       
       // Donwload event
