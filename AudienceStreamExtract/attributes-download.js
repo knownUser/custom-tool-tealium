@@ -89,14 +89,14 @@ window.ssattributesDownload = window.ssattributesDownload || {
               var userInput = filter.toLowerCase();
             _.each(gApp.inMemoryModels.quantifierCollection.sortBy("name"), function (x) {
                 if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
-                    that.data.csv += x.get('name') + ',';       //Attribute Name
-                    that.data.csv += x.get('context').value + ',';   //Scope
-                    that.data.csv += x.get('type').displayName + ','; //DataType
-                    that.data.csv += (x.get('audienceDBEnabled') == true ? 'Yes' : 'No') + ','; //Restricted / AudienceDB;
-                    that.data.csv += ',';                        //Value Source
-                    that.data.csv += x.get('description');    //Description
+                    that.message.data.csv += x.get('name') + ',';       //Attribute Name
+                    that.message.data.csv += x.get('context').value + ',';   //Scope
+                    that.message.data.csv += x.get('type').displayName + ','; //DataType
+                    that.message.data.csv += (x.get('audienceDBEnabled') == true ? 'Yes' : 'No') + ','; //Restricted / AudienceDB;
+                    that.message.data.csv += ',';                        //Value Source
+                    that.message.data.csv += x.get('description');    //Description
                     //Deployed on
-                    that.data.csv += '\n';
+                    that.message.data.csv += '\n';
 
                 }
             });
