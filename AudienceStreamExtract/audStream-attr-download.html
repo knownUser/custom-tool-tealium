@@ -1,0 +1,138 @@
+<script type="text/x-handlebars">
+    <header></header>
+    
+    {{#if ui_start}}
+    
+      <br>
+      <b>Get Variables for "{{data.account_name}}".</b>
+      <br>
+      
+      <div class="btn-grp" style="margin-top:10px;">
+        <input type="hidden" value="run" data-func="ssattributes_download_main" data-arg="command">
+        <button id="run_submit" class="btn btn-success" data-func="ssattributes_download_main">Start</button>
+      </div>  
+    {{/if}}
+    
+    {{#if ui_error}}
+    
+      <br>
+      <div class="alert alert-danger">
+        <h4>Error:</h4>
+        <p>{{data.error_message}}</p>
+      </div>
+    
+      <div class="btn-grp" style="margin-top:5px;">
+        <input type="hidden" value="start" data-func="ssattributes_download_main" data-arg="command">
+        <button id="start_submit" class="btn btn-warning" data-func="ssattributes_download_main">Restart</button>
+      </div>
+    
+    {{/if}}
+    
+    {{#if ui_wait}}
+    
+      <div>
+        {{#if data.wait_message}}
+          <p>{{data.wait_message}}</p>
+        {{/if}}
+      </div>
+    
+    {{/if}}
+    
+    {{#if ui_finish}}
+    
+      <p> Collected Datalayer Variables for "{{data.account_name}}". </p>
+    
+    
+      <div class="btn-grp" style="margin-top:5px;">
+        <button id="download_submit" class="btn btn-success">Download</button>
+        <button id="restart_submit" class="btn btn-warning">Restart</button>
+      </div>
+    
+    {{/if}}
+    
+    <footer></footer>
+
+    <script type="text/javascript">
+      {{#if header}}
+      //Show the header message
+      var header = jQuery("<textarea/>").html('{{header}}').text();
+      jQuery("header").html(header);
+      {{/if}}
+  
+      {{#if footer}}
+      //Show the footer message
+       var footer = jQuery("<textarea/>").html('{{footer}}').text();
+       jQuery("footer").html(footer);
+       {{/if}}
+
+      //Remove any current mousedown events on the exit button
+       jQuery('#custom-tool-exit-btn').off('mousedown');
+       jQuery("#download_submit,#restart_submit").off('click');
+      //Listen for clicking on the exit button
+      jQuery('#custom-tool-exit-btn').on('mousedown', function(){
+        tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
+      });
+      
+      // Donwload event
+      jQuery("#download_submit").on('click', function() {
+         tealiumTools.invokeFunction('{{namespace}}',{command:"download"});
+      });
+      // Restart event
+       jQuery("#restart_submit").on('click', function() {
+         tealiumTools.invokeFunction('{{namespace}}',{command:"start"});
+      });
+    // Make progress circle
+     window.makeProgressCircle = window.makeProgressCircle || function() {
+       if(jQuery('div[id=progressCircle]').length === 0){
+        jQuery('<div id="progressCircle"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>')
+         .attr('style', 'position:fixed;top:50%;left:50%;margin-top:-18px;margin-left:-18px;z-index:5001;color:#AAA;')
+         .width(35)
+         .height(35)
+         .prependTo(document.body);
+       }
+      }
+    window.removeProgressCircle = window.removeProgressCircle || function() {
+    jQuery('div[id=progressCircle]').remove();
+  }
+
+  {{#if ui_start}}
+
+try{
+  removeProgressCircle();
+}catch(e){
+  console.log(e);
+}
+
+{{/if}}
+{{#if ui_wait}}
+
+try{
+  window.makeProgressCircle();
+}catch(e){
+  console.log(e);
+}
+
+{{/if}}
+{{#if ui_error}}
+
+try{
+  removeProgressCircle();
+}catch(e){
+  console.log(e);
+}
+
+{{/if}}
+{{#if ui_finish}}
+
+try{
+  removeProgressCircle();
+}catch(e){
+  console.log(e);
+}
+
+{{/if}}
+
+
+    </script>
+
+</script>
