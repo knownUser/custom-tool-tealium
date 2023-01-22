@@ -49,9 +49,8 @@ window.ssattributesDownload = window.ssattributesDownload || {
     start: function () {
         this.message.exit = false;
         this.ui_state('ui_start');
-        this.message.queryParams = new URLSearchParams(window.location.search);
-        this.message.data.account_name = this.message.queryParams.get("account");
-        this.message.data.profile_name = this.message.queryParams.get("profile");
+        this.message.data.account_name = gApp.utils.url.getQueryParamByName("account");
+        this.message.data.profile_name = gApp.utils.url.getQueryParamByName("profile");
         this.message.data.headers = ["Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
         this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
         console.log(this);
