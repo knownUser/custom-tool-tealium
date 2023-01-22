@@ -8,7 +8,7 @@ window.datalayerDownload = window.datalayerDownload || {
 
     message: {
         'header': '',
-        'footer': '<br><p style="">Comments / bugs / feature requests? Open new issue at<a href="https://github.com/knownUser/custom-tool">MyGithub page</a></p>',
+        'footer': '<br><p style="">Comments / bugs / feature requests? Open new issue at<a href="https://github.com/knownUser/custom-tool-tealium">MyGithub page</a></p>',
         'namespace': "datalayer_download_main",
          data: {
          }
