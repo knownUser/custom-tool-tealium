@@ -6,31 +6,32 @@
     "scripts": {
         "attributes-by-text": {
             "title": "Attributes by Label",
+            "button_label": "Notify me!",
+            "auto_inject": false,
+            "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
+            "remote_js": true,
+            "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
+            "remote_template": true,
             "input": {
                 "attributeLabel": {
                     "type": "text",
                     "placeholder": "Filter Name",
                     "label": "Attribute Label:"
-                },
-                "auto_inject": true,
-                "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
-                "remote_js": true,
-                "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
-                "remote_template": true
-            },
-            "audiences-by-text": {
-                "title": "Audiences by Label",
-                "input": {
-                    "myTitle": {
-                        "type": "text",
-                        "placeholder": "Filter Name",
-                        "label": "Audience Label:"
-                    },
-                    "auto_inject": true,
-                    "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
-                    "remote_js": true,
-                    "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
-                    "remote_template": true
+                }
+            }
+        },
+        "audiences-by-text": {
+            "title": "Audiences by Label",
+            "auto_inject": false,
+            "js": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.js",
+            "remote_js": true,
+            "template": "https://knownuser.github.io/custom-tool-tealium/datalayerDownload/datalayer-download.html",
+            "remote_template": true,
+            "input": {
+                "myTitle": {
+                    "type": "text",
+                    "placeholder": "Filter Name",
+                    "label": "Audience Label:"
                 }
             }
         }

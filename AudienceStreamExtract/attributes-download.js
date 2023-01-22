@@ -85,8 +85,9 @@ window.ssattributesDownload = window.ssattributesDownload || {
         this.makeProgressCircle('Getting all variables in profile: ' + this.message.data.profile_name);
 
         try {
+            var userInput = tealiumTools.input.attributeLabel.toString();
             _.each(gApp.inMemoryModels.quantifierCollection.sortBy("name"), function (x) {
-                if (x.get('name').toLowerCase().indexOf('imfinzi possibilist') > -1 || x.get('name').toLowerCase().indexOf('imfinzi confident') > -1) {
+                if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
                     that.data.csv += x.get('name') + ',';       //Attribute Name
                     that.data.csv += x.get('context').value + ',';   //Scope
                     that.data.csv += x.get('type').displayName + ','; //DataType
