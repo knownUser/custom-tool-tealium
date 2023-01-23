@@ -7,6 +7,7 @@
         "attributes-by-text": {
             "title": "Attributes by Label",
             "button_label": "Get Attribute!",
+            "description": "Scrapes Attributes from the current Profile",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
             "remote_template": true,
@@ -15,6 +16,7 @@
         "audiences-by-text": {
             "title": "Audiences by Label",
             "button_label": "Get Audience!",
+            "description": "Scrapes Audiences from the current Profile",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audience-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-aud-download.html",
             "remote_template": true,

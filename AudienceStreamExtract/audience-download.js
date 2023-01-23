@@ -14,7 +14,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         }
     },
 
-    init: function (tool) {
+    ss_init: function (tool) {
         if (document.URL.indexOf('my.tealiumiq.com/datacloud') === -1) {
             //this.ui_state('ui_error');
             this.error('Need to be on Tealium Server Side');
@@ -22,19 +22,19 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         }
 
         switch (tool.command) {
-            case "start":
+            case "ss_start":
                 console.log('inside start');
-                this.start();
+                this.ss_start();
                 break;
-            case "run":
-                this.makeProgressCircle();
-                this.getAudience(tool.filter);
+            case "ss_run":
+                this.ss_makeProgressCircle();
+                this.ss_getAudience(tool.filter);
                 break;
-            case "download":
-                this.download();
+            case "ss_download":
+                this.ss_download();
                 break;
-            case "exit":
-                this.exit();
+            case "ss_exit":
+                this.ss_exit();
                 break;
             default:
                 //this.ui_state('ui_error');
@@ -46,7 +46,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         tealiumTools.send(this.message);
     },
 
-    start: function () {
+    ss_start: function () {
         this.message.exit = false;
         this.ui_state('ui_start');
         this.message.data.account_name = gApp.utils.url.getQueryParamByName("account");
@@ -56,7 +56,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         console.log(this);
     },
 
-    download: function () {
+    ss_download: function () {
         var b = document.createElement('a'),
             $v,
             csvData = new Blob([this.message.data.csv], {
@@ -64,14 +64,14 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
             });
         b.setAttribute("id", "ss_audience_export");
         b.setAttribute("href", URL.createObjectURL(csvData));
-        b.setAttribute("download", this.message.data.profile_name + "_ss_audience_export.csv");
+        b.setAttribute("ss_download", this.message.data.profile_name + "_ss_audience_export.csv");
         document.body.appendChild(b);
         $v = $.find('#ss_audience_export')[0];
         $v.click();
         $v.remove();
     },
 
-    makeProgressCircle: function (cmd) {
+    ss_makeProgressCircle: function (cmd) {
         this.ui_state('ui_wait');
         if (typeof msg !== 'undefined') {
             this.message.data.wait_message = msg;
@@ -79,11 +79,11 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         tealiumTools.send(this.message);
     },
 
-    getAudience: function (filter) {
+    ss_getAudience: function (filter) {
 
         var that = this;
 
-        this.makeProgressCircle('Getting all variables in profile: ' + this.message.data.profile_name);
+        this.ss_makeProgressCircle('Getting all variables in profile: ' + this.message.data.profile_name);
 
         try {
             var userInput = filter.toLowerCase();
@@ -140,18 +140,18 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
 }
 
 window.ssaudiences_download_main = function (args) {
-    return ssaudiencesDownload.init(args);
+    return ssaudiencesDownload.ss_init(args);
 }
 
 if (!ssaudiencesDownload.initialized) {
     ssaudiencesDownload.initialized = true;
     ssaudiences_download_main({
-        command: 'start'
+        command: 'ss_start'
     });
 } else {
     if (typeof ssaudiencesDownload.message.ui_finish === 'undefined' || ssaudiencesDownload.message.exit === true) {
         ssaudiences_download_main({
-            command: "start"
+            command: "ss_start"
         });
     }
 } 
