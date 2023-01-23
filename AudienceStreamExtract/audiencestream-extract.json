@@ -12,15 +12,6 @@
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
             "remote_template": true,
             "remote_js": true
-        },
-        "audiences_by_text": {
-            "title": "Audiences by Label",
-            "button_label": "Get Audience!",
-            "description": "Scrapes Audiences from the current Profile",
-            "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
-            "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-aud-download.html",
-            "remote_template": true,
-            "remote_js": true
         }
     }
 }
