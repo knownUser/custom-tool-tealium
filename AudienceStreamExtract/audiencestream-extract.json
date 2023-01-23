@@ -6,7 +6,7 @@
     "scripts": {
         "attributes-by-text": {
             "title": "Attributes by Label",
-            "auto_inject": true,
+            "button_label": "Get Attribute!",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
             "remote_template": true,
@@ -14,7 +14,7 @@
         },
         "audiences-by-text": {
             "title": "Audiences by Label",
-            "auto_inject": true,
+            "button_label": "Get Audience!",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audience-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-aud-download.html",
             "remote_template": true,

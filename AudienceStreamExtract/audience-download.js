@@ -52,7 +52,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         this.message.data.account_name = gApp.utils.url.getQueryParamByName("account");
         this.message.data.profile_name = gApp.utils.url.getQueryParamByName("profile");
         this.message.data.headers = ["Audience Name, Conditions"];
-        this.message.data.csv = this.message.data.headers.join(',') + '\n';
+        this.message.data.csv = "Audience Name, Conditions\n";
         console.log(this);
     },
 
@@ -62,11 +62,11 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
             csvData = new Blob([this.message.data.csv], {
                 type: 'text/csv'
             });
-        b.setAttribute("id", "ss_attribute_export");
+        b.setAttribute("id", "ss_audience_export");
         b.setAttribute("href", URL.createObjectURL(csvData));
         b.setAttribute("download", this.message.data.profile_name + "_ss_audience_export.csv");
         document.body.appendChild(b);
-        $v = $.find('#ss_attribute_export')[0];
+        $v = $.find('#ss_audience_export')[0];
         $v.click();
         $v.remove();
     },
