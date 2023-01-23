@@ -28,7 +28,11 @@ window.ssattributesDownload = window.ssattributesDownload || {
                 break;
             case "run":
                 this.makeProgressCircle();
-                this.getssAttributes(tool.filter);
+                this.getsAttributes(tool.filter);
+                break;
+            case "aud_run":
+                this.makeProgressCircle();
+                this.getAudience(tool.filter);
                 break;
             case "download":
                 this.download();
@@ -51,8 +55,6 @@ window.ssattributesDownload = window.ssattributesDownload || {
         this.ui_state('ui_start');
         this.message.data.account_name = gApp.utils.url.getQueryParamByName("account");
         this.message.data.profile_name = gApp.utils.url.getQueryParamByName("profile");
-        this.message.data.headers = ["Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
-        this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
         console.log(this);
     },
 
@@ -64,7 +66,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
             });
         b.setAttribute("id", "ss_attribute_export");
         b.setAttribute("href", URL.createObjectURL(csvData));
-        b.setAttribute("download", this.message.data.profile_name + "_ss_attribute_export.csv");
+        b.setAttribute("download", this.message.data.profile_name + this.message.data.file_name+ "_export.csv");
         document.body.appendChild(b);
         $v = $.find('#ss_attribute_export')[0];
         $v.click();
@@ -79,14 +81,19 @@ window.ssattributesDownload = window.ssattributesDownload || {
         tealiumTools.send(this.message);
     },
 
-    getssAttributes: function (filter) {
+    getsAttributes: function (filter) {
+
+        this.message.data.csv = '';
+
+        this.message.data.headers = ["Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
+        this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
 
         var that = this;
 
         this.makeProgressCircle('Getting all variables in profile: ' + this.message.data.profile_name);
 
         try {
-              var userInput = filter.toLowerCase();
+            var userInput = filter.toLowerCase();
             _.each(gApp.inMemoryModels.quantifierCollection.sortBy("name"), function (x) {
                 if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
                     that.message.data.csv += x.get('name') + ',';       //Attribute Name
@@ -101,8 +108,52 @@ window.ssattributesDownload = window.ssattributesDownload || {
                 }
             });
 
+            that.message.data.file_name = 'attributes';
+
         } catch (error) {
             this.error('An error occured collecting variable data: ' + error);
+
+        }
+
+        this.ui_state('ui_finish');
+
+
+    },
+
+    getAudience: function (filter) {
+
+        this.message.data.csv = '';
+
+        this.message.data.headers = ["Audience Name, Conditions"];
+        this.message.data.csv = "Audience Name, Conditions\n";
+
+        var that = this;
+
+        this.makeProgressCircle('Getting all variables in profile: ' + this.message.data.profile_name);
+
+        try {
+            var userInput = filter.toLowerCase();
+            _.each(gApp.inMemoryModels.audienceCollection.sortBy("name"), function (x) {
+                if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
+                    that.message.data.csv += x.get('name') + ',';
+                    that.message.data.csv += "\"";
+                    var condition = JSON.parse(x.attributes.logic);
+                    for (var i = 0; i < condition.$or.length; i++) {
+                        for (var j = 0; j < condition.$or[i].$and.length; j++) {
+                            var operand1 = condition.$or[i].$and[j].operand1.split('.')[1];
+                            var audiAttribute = gApp.inMemoryModels.quantifierCollection._byId[operand1]
+                            that.message.data.csv += audiAttribute.get('type').displayName.replace(/\n/g, '') + " " + audiAttribute.get('name').replace(/\n/g, '') + " " + condition.$or[i].$and[j].operator + " \n " + ((j + 1 == condition.$or[i].$and.length && i + 1 < condition.$or.length) ? 'OR' : (j + 1 < condition.$or[i].$and.length) ? 'AND' : '');
+                            that.message.data.csv += " \n ";
+                        }
+                    }
+                    that.message.data.csv += "\"";
+                    that.message.data.csv += "\n";
+                }
+            });
+            that.message.data.file_name = 'audiences';
+
+        } catch (error) {
+            this.ss_error('An error occured collecting variable data: ' + error);
 
         }
 

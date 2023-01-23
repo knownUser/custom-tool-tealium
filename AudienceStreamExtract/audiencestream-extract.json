@@ -4,7 +4,7 @@
     "description": "This tool downloads the attributes and audiences from AudienceStream Profile",
     "icon_url": "https://knownuser.github.io/custom-tool-tealium/one-punch-man-saitama.jpg",
     "scripts": {
-        "attributes-by-text": {
+        "attributes_by_text": {
             "title": "Attributes by Label",
             "button_label": "Get Attribute!",
             "description": "Scrapes Attributes from the current Profile",
@@ -13,11 +13,11 @@
             "remote_template": true,
             "remote_js": true
         },
-        "audiences-by-text": {
+        "audiences_by_text": {
             "title": "Audiences by Label",
             "button_label": "Get Audience!",
             "description": "Scrapes Audiences from the current Profile",
-            "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audience-download.js",
+            "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-aud-download.html",
             "remote_template": true,
             "remote_js": true

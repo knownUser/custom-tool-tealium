@@ -1,146 +1,146 @@
 <script type="text/x-handlebars">
-    <header></header>
-
-    {{#if ui_start}}
-    
-      <br>
-      <b>Get Variables for "{{data.account_name}}".</b>
-      <br>
-
-      <div class="btn-grp" style="margin-top:10px;">
-        <label for="audlabel">Audiences Label: </label>
-        <input type="text" id="aud_label" name="audlabel"><br><br>
-        <button id="ss_run_submit" class="btn btn-success" >Start</button>
-      </div>  
-      
-    {{/if}}
-    
-    {{#if ui_error}}
-    
-      <br>
-      <div class="alert alert-danger">
-        <h4>Error:</h4>
-        <p>{{data.error_message}}</p>
-      </div>
-    
-      <div class="btn-grp" style="margin-top:5px;">
-        <input type="hidden" value="ss_start" data-func="ssaudiences_download_main" data-arg="command">
-        <button id="ss_start_submit" class="btn btn-warning" data-func="ssaudiences_download_main">Restart</button>
-      </div>
-    
-    {{/if}}
-    
-    {{#if ui_wait}}
-    
-      <div>
-        {{#if data.wait_message}}
-          <p>{{data.wait_message}}</p>
-        {{/if}}
-      </div>
-    
-    {{/if}}
-    
-    {{#if ui_finish}}
-    
-      <p> Collected Datalayer Variables for "{{data.account_name}}". </p>
-    
-    
-      <div class="btn-grp" style="margin-top:5px;">
-        <button id="ss_download_submit" class="btn btn-success">Download</button>
-        <button id="ss_restart_submit" class="btn btn-warning">Restart</button>
-      </div>
-    
-    {{/if}}
-    
-    <footer></footer>
-
-    <script type="text/javascript">
-      {{#if header}}
-      //Show the header message
-      var header = jQuery("<textarea/>").html('{{header}}').text();
-      jQuery("header").html(header);
-      {{/if}}
-  
-      {{#if footer}}
-      //Show the footer message
-       var footer = jQuery("<textarea/>").html('{{footer}}').text();
-       jQuery("footer").html(footer);
-       {{/if}}
-
-      //Remove any current mousedown events on the exit button
-       jQuery('#custom-tool-exit-btn').off('mousedown');
-       jQuery("#ss_download_submit,#ss_restart_submit").off('click');
-      //Listen for clicking on the exit button
-      jQuery('#custom-tool-exit-btn').on('mousedown', function(){
-        tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_exit"});
-      });
-
-      //Start Event
-      jQuery("#ss_run_submit").on('click', function() {
-        var userInput = jQuery('#aud_label').val();
-         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_run",filter:userInput});
-      });
-      
-      // Donwload event
-      jQuery("#ss_download_submit").on('click', function() {
-         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_download"});
-      });
-      // Restart event
-       jQuery("#ss_restart_submit").on('click', function() {
-         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_start"});
-      });
-    // Make progress circle
-     window.ss_makeProgressCircle = window.ss_makeProgressCircle || function() {
-       if(jQuery('div[id=ss_progressCircle]').length === 0){
-        jQuery('<div id="ss_progressCircle"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>')
-         .attr('style', 'position:fixed;top:50%;left:50%;margin-top:-18px;margin-left:-18px;z-index:5001;color:#AAA;')
-         .width(35)
-         .height(35)
-         .prependTo(document.body);
-       }
-      }
-    window.ss_removeProgressCircle = window.ss_removeProgressCircle || function() {
-    jQuery('div[id=ss_progressCircle]').remove();
-  }
+  <header></header>
 
   {{#if ui_start}}
+  
+    <br>
+    <b>Get Variables for "{{data.account_name}}".</b>
+    <br>
+
+    <div class="btn-grp" style="margin-top:10px;">
+      <label for="audlabel">Attribute Label: </label>
+      <input type="text" id="aud_label" name="audlabel"><br><br>
+      <button id="aud_run_submit" class="btn btn-success" >Start</button>
+    </div>  
+    
+  {{/if}}
+  
+  {{#if ui_error}}
+  
+    <br>
+    <div class="alert alert-danger">
+      <h4>Error:</h4>
+      <p>{{data.error_message}}</p>
+    </div>
+  
+    <div class="btn-grp" style="margin-top:5px;">
+      <input type="hidden" value="start" data-func="ssattributes_download_main" data-arg="command">
+      <button id="start_submit" class="btn btn-warning" data-func="ssattributes_download_main">Restart</button>
+    </div>
+  
+  {{/if}}
+  
+  {{#if ui_wait}}
+  
+    <div>
+      {{#if data.wait_message}}
+        <p>{{data.wait_message}}</p>
+      {{/if}}
+    </div>
+  
+  {{/if}}
+  
+  {{#if ui_finish}}
+  
+    <p> Collected Datalayer Variables for "{{data.account_name}}". </p>
+  
+  
+    <div class="btn-grp" style="margin-top:5px;">
+      <button id="download_submit" class="btn btn-success">Download</button>
+      <button id="restart_submit" class="btn btn-warning">Restart</button>
+    </div>
+  
+  {{/if}}
+  
+  <footer></footer>
+
+  <script type="text/javascript">
+    {{#if header}}
+    //Show the header message
+    var header = jQuery("<textarea/>").html('{{header}}').text();
+    jQuery("header").html(header);
+    {{/if}}
+
+    {{#if footer}}
+    //Show the footer message
+     var footer = jQuery("<textarea/>").html('{{footer}}').text();
+     jQuery("footer").html(footer);
+     {{/if}}
+
+    //Remove any current mousedown events on the exit button
+     jQuery('#custom-tool-exit-btn').off('mousedown');
+     jQuery("#download_submit,#restart_submit").off('click');
+    //Listen for clicking on the exit button
+    jQuery('#custom-tool-exit-btn').on('mousedown', function(){
+      tealiumTools.invokeFunction('ssattributes_download_main',{command:"exit"});
+    });
+
+    //Start Event
+    jQuery("#aud_run_submit").on('click', function() {
+      var userInput = jQuery('#aud_label').val();
+       tealiumTools.invokeFunction('ssattributes_download_main',{command:"aud_run",filter:userInput});
+    });
+    
+    // Donwload event
+    jQuery("#download_submit").on('click', function() {
+       tealiumTools.invokeFunction('ssattributes_download_main',{command:"download"});
+    });
+    // Restart event
+     jQuery("#restart_submit").on('click', function() {
+       tealiumTools.invokeFunction('ssattributes_download_main',{command:"start"});
+    });
+  // Make progress circle
+   window.makeProgressCircle = window.makeProgressCircle || function() {
+     if(jQuery('div[id=progressCircle]').length === 0){
+      jQuery('<div id="progressCircle"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>')
+       .attr('style', 'position:fixed;top:50%;left:50%;margin-top:-18px;margin-left:-18px;z-index:5001;color:#AAA;')
+       .width(35)
+       .height(35)
+       .prependTo(document.body);
+     }
+    }
+  window.removeProgressCircle = window.removeProgressCircle || function() {
+  jQuery('div[id=progressCircle]').remove();
+}
+
+{{#if ui_start}}
 
 try{
-    ss_removeProgressCircle();
+removeProgressCircle();
 }catch(e){
-  console.log(e);
+console.log(e);
 }
 
 {{/if}}
 {{#if ui_wait}}
 
 try{
-  window.ss_makeProgressCircle();
+window.makeProgressCircle();
 }catch(e){
-  console.log(e);
+console.log(e);
 }
 
 {{/if}}
 {{#if ui_error}}
 
 try{
-    ss_removeProgressCircle();
+removeProgressCircle();
 }catch(e){
-  console.log(e);
+console.log(e);
 }
 
 {{/if}}
 {{#if ui_finish}}
 
 try{
-    ss_removeProgressCircle();
+removeProgressCircle();
 }catch(e){
-  console.log(e);
+console.log(e);
 }
 
 {{/if}}
 
 
-    </script>
+  </script>
 
 </script>
