@@ -135,6 +135,8 @@ window.ssattributesDownload = window.ssattributesDownload || {
 
 }
 
+tealiumTools.scriptId = "attributes-by-text";
+
 window.ssattributes_download_main = function (args) {
     return ssattributesDownload.init(args);
 }

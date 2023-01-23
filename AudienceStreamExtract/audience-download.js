@@ -139,6 +139,8 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
 
 }
 
+tealiumTools.scriptId = "audiences-by-text";
+
 window.ssaudiences_download_main = function (args) {
     return ssaudiencesDownload.ss_init(args);
 }
