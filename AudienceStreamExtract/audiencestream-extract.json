@@ -10,6 +10,13 @@
             "description": "Scrapes Attributes from the current Profile",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
+            "input": {
+                "myTitle": {
+                    "type": "text",
+                    "placeholder": "Important Title!",
+                    "label": "Notification title:"
+                }
+            },
             "remote_template": true,
             "remote_js": true
         }
