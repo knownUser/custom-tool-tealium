@@ -28,7 +28,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
                 break;
             case "run":
                 this.makeProgressCircle();
-                this.getssAttributes(tool.filter);
+                this.getAudience(tool.filter);
                 break;
             case "download":
                 this.download();
@@ -79,7 +79,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         tealiumTools.send(this.message);
     },
 
-    getssAttributes: function (filter) {
+    getAudience: function (filter) {
 
         var that = this;
 

@@ -8,9 +8,9 @@
       <br>
 
       <div class="btn-grp" style="margin-top:10px;">
-        <label for="attrlabel">Audiences Label: </label>
-        <input type="text" id="attr_label" name="attrlabel"><br><br>
-        <button id="run_submit" class="btn btn-success" >Start</button>
+        <label for="audlabel">Audiences Label: </label>
+        <input type="text" id="aud_label" name="audlabel"><br><br>
+        <button id="ss_run_submit" class="btn btn-success" >Start</button>
       </div>  
       
     {{/if}}
@@ -25,7 +25,7 @@
     
       <div class="btn-grp" style="margin-top:5px;">
         <input type="hidden" value="start" data-func="ssaudiences_download_main" data-arg="command">
-        <button id="start_submit" class="btn btn-warning" data-func="ssaudiences_download_main">Restart</button>
+        <button id="ss_start_submit" class="btn btn-warning" data-func="ssaudiences_download_main">Restart</button>
       </div>
     
     {{/if}}
@@ -46,8 +46,8 @@
     
     
       <div class="btn-grp" style="margin-top:5px;">
-        <button id="download_submit" class="btn btn-success">Download</button>
-        <button id="restart_submit" class="btn btn-warning">Restart</button>
+        <button id="ss_download_submit" class="btn btn-success">Download</button>
+        <button id="ss_restart_submit" class="btn btn-warning">Restart</button>
       </div>
     
     {{/if}}
@@ -69,44 +69,44 @@
 
       //Remove any current mousedown events on the exit button
        jQuery('#custom-tool-exit-btn').off('mousedown');
-       jQuery("#download_submit,#restart_submit").off('click');
+       jQuery("#ss_download_submit,#ss_restart_submit").off('click');
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
         tealiumTools.invokeFunction('{{namespace}}',{command:"exit"});
       });
 
       //Start Event
-      jQuery("#run_submit").on('click', function() {
-        var userInput = jQuery('#attr_label').val();
+      jQuery("#ss_run_submit").on('click', function() {
+        var userInput = jQuery('#aud_label').val();
          tealiumTools.invokeFunction('{{namespace}}',{command:"run",filter:userInput});
       });
       
       // Donwload event
-      jQuery("#download_submit").on('click', function() {
+      jQuery("#ss_download_submit").on('click', function() {
          tealiumTools.invokeFunction('{{namespace}}',{command:"download"});
       });
       // Restart event
-       jQuery("#restart_submit").on('click', function() {
+       jQuery("#ss_restart_submit").on('click', function() {
          tealiumTools.invokeFunction('{{namespace}}',{command:"start"});
       });
     // Make progress circle
-     window.makeProgressCircle = window.makeProgressCircle || function() {
-       if(jQuery('div[id=progressCircle]').length === 0){
-        jQuery('<div id="progressCircle"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>')
+     window.ss_makeProgressCircle = window.ss_makeProgressCircle || function() {
+       if(jQuery('div[id=ss_progressCircle]').length === 0){
+        jQuery('<div id="ss_progressCircle"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>')
          .attr('style', 'position:fixed;top:50%;left:50%;margin-top:-18px;margin-left:-18px;z-index:5001;color:#AAA;')
          .width(35)
          .height(35)
          .prependTo(document.body);
        }
       }
-    window.removeProgressCircle = window.removeProgressCircle || function() {
-    jQuery('div[id=progressCircle]').remove();
+    window.ss_removeProgressCircle = window.ss_removeProgressCircle || function() {
+    jQuery('div[id=ss_progressCircle]').remove();
   }
 
   {{#if ui_start}}
 
 try{
-  removeProgressCircle();
+    ss_removeProgressCircle();
 }catch(e){
   console.log(e);
 }
@@ -115,7 +115,7 @@ try{
 {{#if ui_wait}}
 
 try{
-  window.makeProgressCircle();
+  window.ss_makeProgressCircle();
 }catch(e){
   console.log(e);
 }
@@ -124,7 +124,7 @@ try{
 {{#if ui_error}}
 
 try{
-  removeProgressCircle();
+    ss_removeProgressCircle();
 }catch(e){
   console.log(e);
 }
@@ -133,7 +133,7 @@ try{
 {{#if ui_finish}}
 
 try{
-  removeProgressCircle();
+    ss_removeProgressCircle();
 }catch(e){
   console.log(e);
 }
