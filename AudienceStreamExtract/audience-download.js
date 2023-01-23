@@ -16,7 +16,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
 
     ss_init: function (tool) {
         if (document.URL.indexOf('my.tealiumiq.com/datacloud') === -1) {
-            //this.ui_state('ui_error');
+            //this.ss_ui_state('ui_error');
             this.error('Need to be on Tealium Server Side');
             return false;
         }
@@ -37,8 +37,8 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
                 this.ss_exit();
                 break;
             default:
-                //this.ui_state('ui_error');
-                this.error("Unknown command received from Tealium Tool: '" + tool.command + "'")
+                //this.ss_ui_state('ui_error');
+                this.ss_error("Unknown command received from Tealium Tool: '" + tool.command + "'")
                 break;
 
         }
@@ -48,7 +48,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
 
     ss_start: function () {
         this.message.exit = false;
-        this.ui_state('ui_start');
+        this.ss_ui_state('ui_start');
         this.message.data.account_name = gApp.utils.url.getQueryParamByName("account");
         this.message.data.profile_name = gApp.utils.url.getQueryParamByName("profile");
         this.message.data.headers = ["Audience Name, Conditions"];
@@ -72,7 +72,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
     },
 
     ss_makeProgressCircle: function (cmd) {
-        this.ui_state('ui_wait');
+        this.ss_ui_state('ui_wait');
         if (typeof msg !== 'undefined') {
             this.message.data.wait_message = msg;
         }
@@ -106,16 +106,16 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
             });
 
         } catch (error) {
-            this.error('An error occured collecting variable data: ' + error);
+            this.ss_error('An error occured collecting variable data: ' + error);
 
         }
 
-        this.ui_state('ui_finish');
+        this.ss_ui_state('ui_finish');
 
 
     },
 
-    ui_state: function (cmd) {
+    ss_ui_state: function (cmd) {
         var that = this;
         Object.keys(that.message).forEach(function (key, index) {
             if (key.indexOf('ui_') === 0) {
@@ -125,14 +125,14 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
         that.message[cmd] = true;
     },
 
-    error: function (msg) {
-        this.ui_state('ui_error');
+    ss_error: function (msg) {
+        this.ss_ui_state('ui_error');
         this.message.data.error_message = msg;
         console.log('Error: ' + msg);
         tealiumTools.send(this.message);
     },
 
-    exit: function () {
+    ss_exit: function () {
         this.message.exit = true;
     }
 

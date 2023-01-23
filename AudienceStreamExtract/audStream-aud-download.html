@@ -72,22 +72,22 @@
        jQuery("#ss_download_submit,#ss_restart_submit").off('click');
       //Listen for clicking on the exit button
       jQuery('#custom-tool-exit-btn').on('mousedown', function(){
-        tealiumTools.invokeFunction('{{namespace}}',{command:"ss_exit"});
+        tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_exit"});
       });
 
       //Start Event
       jQuery("#ss_run_submit").on('click', function() {
         var userInput = jQuery('#aud_label').val();
-         tealiumTools.invokeFunction('{{namespace}}',{command:"ss_run",filter:userInput});
+         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_run",filter:userInput});
       });
       
       // Donwload event
       jQuery("#ss_download_submit").on('click', function() {
-         tealiumTools.invokeFunction('{{namespace}}',{command:"ss_download"});
+         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_download"});
       });
       // Restart event
        jQuery("#ss_restart_submit").on('click', function() {
-         tealiumTools.invokeFunction('{{namespace}}',{command:"ss_start"});
+         tealiumTools.invokeFunction('ssaudiences_download_main',{command:"ss_start"});
       });
     // Make progress circle
      window.ss_makeProgressCircle = window.ss_makeProgressCircle || function() {
