@@ -14,7 +14,7 @@
                 "myTitle": {
                     "type": "text",
                     "placeholder": "Important Title!",
-                    "label": "Notification title:"
+                    "label": "Notification:"
                 }
             },
             "remote_template": true,
