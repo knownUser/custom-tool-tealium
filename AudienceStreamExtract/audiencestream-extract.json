@@ -6,17 +6,10 @@
     "scripts": {
         "attributes_by_text": {
             "title": "Attributes by Label",
-            "button_label": "Get Attribute!",
+            "auto_inject": "true",
             "description": "Scrapes Attributes from the current Profile",
             "js": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/attributes-download.js",
             "template": "https://knownuser.github.io/custom-tool-tealium/AudienceStreamExtract/audStream-attr-download.html",
-            "input": {
-                "myTitle": {
-                    "type": "text",
-                    "placeholder": "Important Title!",
-                    "label": "Notification:"
-                }
-            },
             "remote_template": true,
             "remote_js": true
         }
