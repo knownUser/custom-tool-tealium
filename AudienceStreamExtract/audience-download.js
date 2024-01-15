@@ -15,7 +15,7 @@ window.ssaudiencesDownload = window.ssaudiencesDownload || {
     },
 
     ss_init: function (tool) {
-        if (document.URL.indexOf('my.tealiumiq.com/datacloud') === -1) {
+        if (document.URL.indexOf('my.tealiumiq.com') === -1 && document.URL.indexOf('product=SS') === -1) {
             //this.ss_ui_state('ui_error');
             this.error('Need to be on Tealium Server Side');
             return false;
