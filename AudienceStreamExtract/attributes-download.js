@@ -153,7 +153,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
             that.message.data.file_name = 'audiences';
 
         } catch (error) {
-            this.ss_error('An error occured collecting variable data: ' + error);
+            this.error('An error occured collecting variable data: ' + error);
 
         }
 
