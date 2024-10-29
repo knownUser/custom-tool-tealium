@@ -85,7 +85,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
 
         this.message.data.csv = '';
 
-        this.message.data.headers = ["Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
+        this.message.data.headers = ["Attribute Id","Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
         this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
 
         var that = this;
@@ -96,6 +96,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
             var userInput = filter.toLowerCase();
             _.each(gApp.inMemoryModels.quantifierCollection.sortBy("name"), function (x) {
                 if (x.get('name').toLowerCase().indexOf(userInput) > -1) {
+                    that.message.data.csv += x.get('id') + ',';  //Attribute Id
                     that.message.data.csv += x.get('name') + ',';       //Attribute Name
                     that.message.data.csv += x.get('context').value + ',';   //Scope
                     that.message.data.csv += x.get('type').displayName + ','; //DataType
