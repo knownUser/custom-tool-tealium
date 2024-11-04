@@ -103,7 +103,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
                     that.message.data.csv += (x.get('isPersonalInfo') ? 'Yes' : 'No') + ','; //Restrcited Data
                     that.message.data.csv += (x.get('audienceDBEnabled') == true ? 'Yes' : 'No') + ','; // AudienceDB;
                     that.message.data.csv += ',';                        //Value Source
-                    that.message.data.csv += x.get('description');    //Description
+                    that.message.data.csv += '"' + x.get('description') + '"';    //Description
                     //Deployed on
                     that.message.data.csv += '\n';
 
