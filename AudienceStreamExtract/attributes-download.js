@@ -85,7 +85,7 @@ window.ssattributesDownload = window.ssattributesDownload || {
 
         this.message.data.csv = '';
 
-        this.message.data.headers = ["Attribute Id","Attribute Name", "Scope", "Data Type", "Restricted/AudienceDB"];
+        this.message.data.headers = ["Attribute Id","Attribute Name", "Scope", "Data Type", "Restricted", "AudienceDB"];
         this.message.data.csv = this.message.data.headers.join(',') + ',Value Source,Description,Deployed on\n';
 
         var that = this;
@@ -100,7 +100,8 @@ window.ssattributesDownload = window.ssattributesDownload || {
                     that.message.data.csv += x.get('name') + ',';       //Attribute Name
                     that.message.data.csv += x.get('context').value + ',';   //Scope
                     that.message.data.csv += x.get('type').displayName + ','; //DataType
-                    that.message.data.csv += (x.get('audienceDBEnabled') == true ? 'Yes' : 'No') + ','; //Restricted / AudienceDB;
+                    that.message.data.csv += (x.get('isPersonalInfo') ? 'Yes' : 'No') + ','; //Restrcited Data
+                    that.message.data.csv += (x.get('audienceDBEnabled') == true ? 'Yes' : 'No') + ','; // AudienceDB;
                     that.message.data.csv += ',';                        //Value Source
                     that.message.data.csv += x.get('description');    //Description
                     //Deployed on
